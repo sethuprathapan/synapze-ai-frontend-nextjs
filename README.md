@@ -1,0 +1,1 @@
+# synapze-ai-frontend-nextjs
