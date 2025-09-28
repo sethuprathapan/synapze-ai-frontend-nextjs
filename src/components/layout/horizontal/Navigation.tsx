@@ -8,6 +8,9 @@ import HorizontalMenu from './HorizontalMenu'
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
+// Type Imports
+import type { getDictionary } from '@/utils/getDictionary'
+
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'
@@ -36,7 +39,7 @@ const StyledDiv = styled.div<StyledDivProps>`
   `}
 `
 
-const Navigation = () => {
+const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
   const { settings } = useSettings()
   const { isBreakpointReached } = useHorizontalNav()
@@ -57,7 +60,7 @@ const Navigation = () => {
           className: classnames(horizontalLayoutClasses.navigationContentWrapper, 'flex items-center is-full plb-2')
         })}
       >
-        <HorizontalMenu />
+        <HorizontalMenu dictionary={dictionary} />
       </StyledDiv>
     </div>
   )

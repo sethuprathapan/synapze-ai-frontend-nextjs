@@ -2,6 +2,7 @@
 import Button from '@mui/material/Button'
 
 // Type Imports
+import { i18n } from '@configs/i18n'
 import type { ChildrenType } from '@core/types'
 
 // Layout Imports
@@ -17,15 +18,23 @@ import Navbar from '@components/layout/vertical/Navbar'
 import VerticalFooter from '@components/layout/vertical/Footer'
 import HorizontalFooter from '@components/layout/horizontal/Footer'
 import ScrollToTop from '@core/components/scroll-to-top'
+import Customizer from '@core/components/customizer'
+
+// Config Imports
 
 // Util Imports
+import { getDictionary } from '@/utils/getDictionary'
 import { getMode, getSystemMode } from '@core/utils/serverHelpers'
+import type { Locale } from '@/configs/i18n'
 
-const Layout = async (props: ChildrenType) => {
+const Layout = async (props: ChildrenType & { params: Promise<{ lang: Locale }> }) => {
+  const params = await props.params
+
   const { children } = props
 
   // Vars
-  const direction = 'ltr'
+  const direction = i18n.langDirection[params.lang]
+  const dictionary = await getDictionary(params.lang)
   const mode = await getMode()
   const systemMode = await getSystemMode()
 
@@ -34,12 +43,16 @@ const Layout = async (props: ChildrenType) => {
       <LayoutWrapper
         systemMode={systemMode}
         verticalLayout={
-          <VerticalLayout navigation={<Navigation mode={mode} />} navbar={<Navbar />} footer={<VerticalFooter />}>
+          <VerticalLayout
+            navigation={<Navigation mode={mode} dictionary={dictionary} />}
+            navbar={<Navbar />}
+            footer={<VerticalFooter />}
+          >
             {children}
           </VerticalLayout>
         }
         horizontalLayout={
-          <HorizontalLayout header={<Header />} footer={<HorizontalFooter />}>
+          <HorizontalLayout header={<Header dictionary={dictionary} />} footer={<HorizontalFooter />}>
             {children}
           </HorizontalLayout>
         }
@@ -49,6 +62,7 @@ const Layout = async (props: ChildrenType) => {
           <i className='tabler-arrow-up' />
         </Button>
       </ScrollToTop>
+      <Customizer dir={direction} />
     </Providers>
   )
 }

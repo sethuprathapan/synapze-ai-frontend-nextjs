@@ -21,6 +21,7 @@ import menuRootStyles from '@core/styles/horizontal/menuRootStyles'
 import verticalNavigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
 import verticalMenuItemStyles from '@core/styles/vertical/menuItemStyles'
 import verticalMenuSectionStyles from '@core/styles/vertical/menuSectionStyles'
+import type { getDictionary } from '@/utils/getDictionary'
 
 type RenderExpandIconProps = {
   level?: number
@@ -43,10 +44,12 @@ const RenderVerticalExpandIcon = ({ open, transitionDuration }: RenderVerticalEx
   </StyledVerticalNavExpandIcon>
 )
 
-const HorizontalMenu = () => {
+const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
   const verticalNavOptions = useVerticalNav()
   const theme = useTheme()
+
+  console.log('dictionary', dictionary)
 
   // Vars
   const { transitionDuration } = verticalNavOptions

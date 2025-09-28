@@ -11,6 +11,7 @@ import { styled, useColorScheme, useTheme } from '@mui/material/styles'
 
 // Type Imports
 import type { Mode } from '@core/types'
+import type { getDictionary } from '@/utils/getDictionary'
 
 // Component Imports
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu/vertical-menu'
@@ -25,6 +26,7 @@ import { useSettings } from '@core/hooks/useSettings'
 import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
 
 type Props = {
+  dictionary: Awaited<ReturnType<typeof getDictionary>>
   mode: Mode
 }
 
@@ -48,7 +50,7 @@ const StyledBoxForShadow = styled('div')(({ theme }) => ({
 
 const Navigation = (props: Props) => {
   // Props
-  const { mode } = props
+  const { mode, dictionary } = props
 
   // Hooks
   const verticalNavOptions = useVerticalNav()
@@ -121,7 +123,7 @@ const Navigation = (props: Props) => {
         )}
       </NavHeader>
       <StyledBoxForShadow ref={shadowRef} />
-      <VerticalMenu scrollMenu={scrollMenu} />
+      <VerticalMenu dictionary={dictionary} scrollMenu={scrollMenu} />
     </VerticalNav>
   )
 }

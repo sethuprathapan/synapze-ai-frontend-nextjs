@@ -17,9 +17,9 @@ import '@/app/globals.css'
 import '@assets/iconify-icons/generated-icons.css'
 
 export const metadata = {
-  title: 'Vuexy - MUI Next.js Admin Dashboard Template',
+  title: 'SYNAPZE AI',
   description:
-    'Vuexy - MUI Next.js Admin Dashboard Template - is the most developer friendly & highly customizable Admin Dashboard Template based on MUI v5.'
+    'SYNAPZE AI is an AI-powered platform that helps businesses and individuals harness the power of artificial intelligence to drive innovation, improve efficiency, and achieve their goals. With a range of cutting-edge tools and technologies, SYNAPZE AI makes it easy to leverage the latest advancements in AI and machine learning to transform your business and stay ahead of the competition.'
 }
 
 const RootLayout = async (props: ChildrenType) => {

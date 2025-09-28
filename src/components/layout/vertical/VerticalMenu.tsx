@@ -6,6 +6,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
 import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
+import type { getDictionary } from '@/utils/getDictionary'
 
 // Component Imports
 import { Menu, MenuItem } from '@menu/vertical-menu'
@@ -27,6 +28,7 @@ type RenderExpandIconProps = {
 
 type Props = {
   scrollMenu: (container: any, isPerfectScrollbar: boolean) => void
+  dictionary: Awaited<ReturnType<typeof getDictionary>>
 }
 
 const RenderExpandIcon = ({ open, transitionDuration }: RenderExpandIconProps) => (
