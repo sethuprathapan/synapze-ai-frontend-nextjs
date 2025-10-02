@@ -6,9 +6,13 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
+import type { Locale } from '@configs/i18n'
 
 // Util Imports
 import { getSystemMode } from '@core/utils/serverHelpers'
+
+// Config Imports
+import { i18n } from '@configs/i18n'
 
 // Style Imports
 import '@/app/globals.css'
@@ -22,13 +26,13 @@ export const metadata = {
     'SYNAPZE AI is an AI-powered platform that helps businesses and individuals harness the power of artificial intelligence to drive innovation, improve efficiency, and achieve their goals. With a range of cutting-edge tools and technologies, SYNAPZE AI makes it easy to leverage the latest advancements in AI and machine learning to transform your business and stay ahead of the competition.'
 }
 
-const RootLayout = async (props: ChildrenType) => {
+const RootLayout = async (props: ChildrenType & { params: Promise<{ lang: Locale }> }) => {
+  const params = await props.params
   const { children } = props
 
   // Vars
-
   const systemMode = await getSystemMode()
-  const direction = 'ltr'
+  const direction = i18n.langDirection[params.lang]
 
   return (
     <html id='__next' lang='en' dir={direction} suppressHydrationWarning>

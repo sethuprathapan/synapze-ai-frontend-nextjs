@@ -12,11 +12,11 @@ import type { getDictionary } from '@/utils/getDictionary'
 import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
 
 // Component Imports
-import { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
+import { Menu, MenuItem } from '@menu/vertical-menu'
 
-// import { MenuSection } from '@menu/vertical-menu'
+// import { MenuSection, SubMenu } from '@menu/vertical-menu'
 
-import CustomChip from '@core/components/mui/Chip'
+// import CustomChip from '@core/components/mui/Chip'
 
 // import { GenerateVerticalMenu } from '@components/GenerateMenu'
 

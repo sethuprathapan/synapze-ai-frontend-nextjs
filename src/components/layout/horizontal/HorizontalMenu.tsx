@@ -9,9 +9,12 @@ import type { getDictionary } from '@/utils/getDictionary'
 import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
 
 // Component Imports
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu/horizontal-menu'
+import HorizontalNav, { Menu, MenuItem } from '@menu/horizontal-menu'
+
+// import HorizontalNav, { SubMenu } from '@menu/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
-import CustomChip from '@core/components/mui/Chip'
+
+// import CustomChip from '@core/components/mui/Chip'
 
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
