@@ -1,9 +1,10 @@
 // Type Imports
 import type { VerticalMenuDataType } from '@/types/menuTypes'
+import type { getDictionary } from '@/utils/getDictionary'
 
-const verticalMenuData = (): VerticalMenuDataType[] => [
+const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>): VerticalMenuDataType[] => [
   {
-    label: 'Home',
+    label: dictionary['navigation'].dashboards,
     href: '/home',
     icon: 'tabler-smart-home'
   },

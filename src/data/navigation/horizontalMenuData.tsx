@@ -8,7 +8,7 @@ const horizontalMenuData = (): HorizontalMenuDataType[] => [
     icon: 'tabler-smart-home'
   },
   {
-    label: 'About',
+    label: 'Aboutss',
     href: '/about',
     icon: 'tabler-info-circle'
   }

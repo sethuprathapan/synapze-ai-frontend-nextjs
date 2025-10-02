@@ -1,3 +1,6 @@
+// Next Imports
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
 
@@ -5,11 +8,17 @@ import { useTheme } from '@mui/material/styles'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
-import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
 import type { getDictionary } from '@/utils/getDictionary'
+import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
 
 // Component Imports
-import { Menu, MenuItem } from '@menu/vertical-menu'
+import { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
+
+// import { MenuSection } from '@menu/vertical-menu'
+
+import CustomChip from '@core/components/mui/Chip'
+
+// import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
@@ -21,14 +30,17 @@ import StyledVerticalNavExpandIcon from '@menu/styles/vertical/StyledVerticalNav
 import menuItemStyles from '@core/styles/vertical/menuItemStyles'
 import menuSectionStyles from '@core/styles/vertical/menuSectionStyles'
 
+// Menu Data Imports
+// import menuData from '@/data/navigation/verticalMenuData'
+
 type RenderExpandIconProps = {
   open?: boolean
   transitionDuration?: VerticalMenuContextProps['transitionDuration']
 }
 
 type Props = {
-  scrollMenu: (container: any, isPerfectScrollbar: boolean) => void
   dictionary: Awaited<ReturnType<typeof getDictionary>>
+  scrollMenu: (container: any, isPerfectScrollbar: boolean) => void
 }
 
 const RenderExpandIcon = ({ open, transitionDuration }: RenderExpandIconProps) => (
@@ -37,13 +49,15 @@ const RenderExpandIcon = ({ open, transitionDuration }: RenderExpandIconProps) =
   </StyledVerticalNavExpandIcon>
 )
 
-const VerticalMenu = ({ scrollMenu }: Props) => {
+const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
   // Hooks
   const theme = useTheme()
   const verticalNavOptions = useVerticalNav()
+  const params = useParams()
 
   // Vars
   const { isBreakpointReached, transitionDuration } = verticalNavOptions
+  const { lang: locale } = params
 
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
 
@@ -70,11 +84,22 @@ const VerticalMenu = ({ scrollMenu }: Props) => {
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
       >
-        <MenuItem href='/home' icon={<i className='tabler-smart-home' />}>
-          Home
+        {/* <SubMenu
+          label={dictionary['navigation'].dashboards}
+          icon={<i className='tabler-smart-home' />}
+          suffix={<CustomChip label='5' size='small' color='error' round='true' />}
+        >
+          <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/ecommerce`}>{dictionary['navigation'].eCommerce}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/academy`}>{dictionary['navigation'].academy}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/logistics`}>{dictionary['navigation'].logistics}</MenuItem>
+        </SubMenu> */}
+        <MenuItem href={`/${locale}/home`} icon={<i className='tabler-smart-home' />}>
+          {dictionary['navigation'].home}
         </MenuItem>
-        <MenuItem href='/about' icon={<i className='tabler-info-circle' />}>
-          About
+        <MenuItem href={`/${locale}/about`} icon={<i className='tabler-info-circle' />}>
+          {dictionary['navigation'].about}
         </MenuItem>
       </Menu>
       {/* <Menu

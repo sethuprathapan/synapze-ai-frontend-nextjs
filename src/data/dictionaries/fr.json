@@ -1,5 +1,7 @@
 {
   "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
     "dashboards": "Tableaux de bord",
     "crm": "GRC",
     "analytics": "Analytique",

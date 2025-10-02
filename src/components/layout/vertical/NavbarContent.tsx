@@ -11,6 +11,7 @@ import UserDropdown from '@components/layout/shared/UserDropdown'
 // Util Imports
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 import NavSearch from '../shared/search'
+import LanguageDropdown from '../shared/LanguageDropdown'
 
 const NavbarContent = () => {
   return (
@@ -20,6 +21,7 @@ const NavbarContent = () => {
         <NavSearch />
       </div>
       <div className='flex items-center'>
+        <LanguageDropdown />
         <ModeDropdown />
         <UserDropdown />
       </div>
