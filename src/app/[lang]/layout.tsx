@@ -28,6 +28,7 @@ export const metadata = {
 
 const RootLayout = async (props: ChildrenType & { params: Promise<{ lang: Locale }> }) => {
   const params = await props.params
+
   const { children } = props
 
   // Vars
