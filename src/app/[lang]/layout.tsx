@@ -26,14 +26,15 @@ export const metadata = {
     'SYNAPZE AI is an AI-powered platform that helps businesses and individuals harness the power of artificial intelligence to drive innovation, improve efficiency, and achieve their goals. With a range of cutting-edge tools and technologies, SYNAPZE AI makes it easy to leverage the latest advancements in AI and machine learning to transform your business and stay ahead of the competition.'
 }
 
-const RootLayout = async (props: ChildrenType & { params: Promise<{ lang: Locale }> }) => {
+const RootLayout = async (props: ChildrenType & { params: Promise<{ lang: string }> }) => {
   const params = await props.params
+  const lang = params.lang as Locale
 
   const { children } = props
 
   // Vars
   const systemMode = await getSystemMode()
-  const direction = i18n.langDirection[params.lang]
+  const direction = i18n.langDirection[lang]
 
   return (
     <html id='__next' lang='en' dir={direction} suppressHydrationWarning>

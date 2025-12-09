@@ -26,8 +26,8 @@ import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
 import { commonLayoutClasses } from '@layouts/utils/layoutClasses'
-import ChatContent from '@/views/app/chat/ChatContent'
-import SidebarLeft from '@views/app/chat/SidebarLeft'
+import ChatContent from './ChatContent'
+import SidebarLeft from './SidebarLeft'
 
 const ChatWrapper = () => {
   // States
