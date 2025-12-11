@@ -17,7 +17,7 @@ export const db: ChatDataType = {
   contacts: [
     {
       id: 2,
-      fullName: 'Felecia Rower',
+      fullName: 'AI Maths Teacher',
       role: 'Frontend Developer',
       about: 'Cake pie jelly jelly beans. Marzipan lemon drops halvah cake. Pudding cookie lemon drops icing',
       avatar: '/images/avatars/1.png',
@@ -25,7 +25,7 @@ export const db: ChatDataType = {
     },
     {
       id: 3,
-      fullName: 'Adalberto Granzin',
+      fullName: 'AI History Teacher',
       role: 'UI/UX Designer',
       about: 'Cake pie jelly jelly beans. Marzipan lemon drops halvah cake. Pudding cookie lemon drops icing',
       avatarColor: 'success',
